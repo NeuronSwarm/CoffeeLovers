@@ -9,7 +9,7 @@ class Section extends Component {
 
   render() {
     return (
-      <section id="one" className="wrapper style2 special flow">
+      <section id="one" className="special flow">
         <header className="major">
           <h2>Let's get some work done!</h2>
         </header>

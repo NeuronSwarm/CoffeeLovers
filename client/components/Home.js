@@ -2,20 +2,27 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import Section from './Section';
-import Footer from './Footer';
+import Graph from './Graph';
+import Panel from './Panel';
 
 class Home extends Component {
   constructor(props){
     super(props);
+    this.m_data= { title: "Today's Cups", data: { class: 'cups-today' }}
   }
+
   render() {
     return (
       <div>
         <Header />
+        <Panel data = { this.m_data } />
         <Section />
-        <Footer/>
+        <Graph />
       </div>
     )
+  }
+  componentDidMount() {
+    console.log("Home mounted");
   }
 }
 
