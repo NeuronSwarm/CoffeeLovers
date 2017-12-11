@@ -55,6 +55,7 @@ export default reducer;
 /////////////// ACTION DISPATCHER FUNCTIONS///////////////////
 
 export const getAllTasks = () => dispatch => {
+  console.log("Getting Tasks")
   axios.get(`https://api.cosmicjs.com/v1/${config.bucket.slug}/object-type/tasks`)
     .then((response) => {
       return response.data;

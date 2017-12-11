@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Task from './Task';
+import { getAllTasks } from '../redux/reducers/reducer';
 
 class Section extends Component {
   constructor(props) {
     super(props)
   }
 
+  componentWillMount() {
+  }
   render() {
     return (
       <section id="one" className="special flow">

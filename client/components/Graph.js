@@ -8,24 +8,17 @@ class Graph extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="header">
-          <h2>Coffee Report</h2></div>
         <div className="charts-container">
-          <div className="status-history">
-            <h2>November             </h2></div>
-          <div className="last-measurements">
-            <div className="first">
-              <canvas id="myChartA"></canvas></div>
-            <div className="second">
-              <canvas id="myChartB"></canvas></div></div></div></div>
+          <div className="charts-panel">
+            <canvas id={this.props.id}></canvas></div></div>
     )
   }
 
   componentDidMount() {
-    console.log("Graph Mounting");
-    console.log(Chart);
-    window.addEventListener('load', createCharts);
+    var wrapper = (my_graphID) => {
+      return function(){ createCharts(my_graphID)}
+    } 
+    window.addEventListener('load', wrapper(this.props.id));
   }
 }
 

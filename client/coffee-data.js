@@ -1,17 +1,17 @@
 "use strict";
 
-var createCharts = function(){
+var createCharts = function(graphID){
   var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
   "July", "Aug", "Sept", "Oct", "Nov", "Dec"
   ];
   var d = new Date
-  var daysAgo = function(count){ return monthNames[d.getMonth()] + ' ' + (d.getDay() + 1 - count).toString()}
+  var daysAgo = function(count){ return monthNames[d.getMonth()] + ' ' + (d.getDate() + 1 - count).toString()}
   var optsWhsl = {
     type: 'line',
     data: {
-      labels: [daysAgo(5),,, daysAgo(4),,,daysAgo(3),,, daysAgo(2),,, daysAgo(1),, daysAgo(0)],
+      labels: [, daysAgo(5),,, daysAgo(4),,,daysAgo(2),,, daysAgo(1),, daysAgo(0),,],
       datasets: [{
-        label: "Beverly's cups drank",
+        label: "Beverly's cups",
         fill: false,
         lineTension: 0.1,
         backgroundColor: "#32A7EC",
@@ -32,12 +32,16 @@ var createCharts = function(){
       }]
     },
     options: {
-      responsive: false,
+      responsive: true,
       maintainAspectRatio: false,
       scale: {
         ticks: {
-          beginAtZero: true
+          beginAtZero: false
         }
+      },
+      scales: {
+        xAxes: [{ ticks: {fontSize: 12}}],
+        yAxes: [{ ticks: {fontSize: 12}}]
       }
     }
   };
@@ -45,7 +49,7 @@ var createCharts = function(){
   var optsTemp = {
     type: 'line',
     data: {
-      labels: ["Nov 10",,, "Nov 11",,, "Nov 12",,, "Nov 13",,, "Nov 14",,,],
+      labels: [, "Nov 10",,, "Nov 11",,, "Nov 12",,, "Nov 13",,, "Nov 14",,],
       datasets: [{
         label: "Ty's cups drank",
         fill: false,
@@ -68,7 +72,7 @@ var createCharts = function(){
       }]
     },
     options: {
-      responsive: false,
+      responsive: true,
       maintainAspectRatio: false,
       scale: {
         ticks: {
@@ -78,14 +82,10 @@ var createCharts = function(){
     }
   };
 
-  console.log("Chart: " + Chart)
   Chart.defaults.global.defaultFontColor='turquoise';
-  console.log(Chart.defaults.global.defaultFontColor);
-  var ctxA = document.getElementById("myChartA");
-  var ctxB = document.getElementById("myChartB");
+  var ctxA = document.getElementById(graphID);
 
   new Chart(ctxA, optsWhsl);
-  new Chart(ctxB, optsTemp);
 }
 
 export default createCharts;

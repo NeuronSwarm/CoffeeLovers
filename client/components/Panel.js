@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Task from './Task';
+import Today from './Today';
 
 class Panel extends Component {
   constructor(props) {
@@ -10,10 +11,10 @@ class Panel extends Component {
   render() {
     return (
       <div className="panel1">
-        <header className="major">
-          <h2> {this.props.data.title}</h2>
+        <header className={this.props.data.container}>
+          <Today data= {this.props.data} type= {this.props.data.type} />
         </header>
-        <div className= {this.props.data.class}> 5 </div>
+        <div className='statistic-label'> {this.props.data.title}</div>
       </div>
     );
   }
