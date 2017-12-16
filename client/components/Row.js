@@ -7,7 +7,7 @@ import Panel from './Panel';
 import Container from './Container';
 import Container_Row from './Container_Row';
 import Row from './Row';
-import { getAllTasks } from '../redux/reducers/reducer';
+import { getCoffeeIndex, getLastDays } from '../redux/reducers/coffee-api';
 
 class Home extends Component {
   constructor(props){
@@ -29,22 +29,21 @@ class Home extends Component {
       <div>
         <Container_Row>
           <Container>
-            <Panel data = { this.m_data } />
-            <Panel data = { this.drink_data } />
+            <Panel data = { this.m_data } coffee = { this.props.coffee } />
+            <Panel data = { this.drink_data } coffee = { this.props.coffee } />
           </Container>
           <Container chart = {true}>
-            <Graph id = {this.props.graph.id}/>
+            <Graph id = {this.props.graph.id} onEnter={ getLastDays }/>
           </Container>
         </Container_Row>
       </div>
     )
   }
   componentDidMount() {
-    console.log("Home mounted");
-    getAllTasks();
+    console.log("Row mounted");
   }
 }
 
-const mapState = ({tasks}) => ({tasks});
-const mapDispatch = {getAllTasks};
+const mapState = ({coffee}) => ({coffee});
+const mapDispatch = { getCoffeeIndex };
 export default connect(mapState, mapDispatch)(Home);

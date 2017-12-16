@@ -6,29 +6,25 @@ import Graph from './Graph';
 import Panel from './Panel';
 import Container from './Container';
 import Row from './Row';
-import { getAllTasks } from '../redux/reducers/reducer';
+import { getCoffeeIndex } from '../redux/reducers/coffee-api';
 
 class Home extends Component {
   constructor(props){
     super(props);
-    this.m_data= { title: "Today's Cups",
-                   type: "TODAY",
-                   cups: 'cups-today',
-                   container: 'title-container',
-                   cupCount: 5}
-    this.drink_data= { title: "Last Cup",
-                   type: "LAST_CUP",
-                   cups: 'cups-today',
-                   container: 'title-container',
-                   time: '6:02pm'}
-    this.graph1 = { id: "chart1" }
-    this.graph2 = { id: "chart2" }
+    this.style = { fontSize: '36px',
+                   margin: "10px 0",
+                   marginLeft: "5%",
+                   textTransform: 'capitalize' }
+    var config = { lastDays: [] }; 
+    this.graph1 = { id: "chart1", config}
+    this.graph2 = { id: "chart2", config}
   }
 
 
   render() {
     return (
       <div>
+        <div style={this.style}> {this.props.coffee.user} </div>
         <Row graph = {this.graph1}/>
         <Row graph = {this.graph2}/>
       </div>
@@ -36,10 +32,9 @@ class Home extends Component {
   }
   componentDidMount() {
     console.log("Home mounted");
-    getAllTasks();
   }
 }
 
-const mapState = ({tasks}) => ({tasks});
-const mapDispatch = {getAllTasks};
+const mapState = ({coffee}) => ({coffee});
+const mapDispatch = { getCoffeeIndex };
 export default connect(mapState, mapDispatch)(Home);

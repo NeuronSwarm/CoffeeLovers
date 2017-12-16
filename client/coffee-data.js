@@ -1,15 +1,27 @@
 "use strict";
 
-var createCharts = function(graphID){
+var toArray = (data) => {
+  if(!data) return null;
+  var tmp = data.map((obj) => {
+    return obj.count;
+  })
+  return tmp.reverse()
+}
+var createCharts = function(config){
+  var graphID = config.id
+  var graphData = toArray(config.data) || [2, 2, 3, 2, 3, 3, 4, 2, 3, 4]
+
+  console.log(graphData)
+
   var monthNames = ["Jan", "Feb", "March", "April", "May", "June",
   "July", "Aug", "Sept", "Oct", "Nov", "Dec"
   ];
   var d = new Date
-  var daysAgo = function(count){ return monthNames[d.getMonth()] + ' ' + (d.getDate() + 1 - count).toString()}
+  var daysAgo = function(count){ return monthNames[d.getMonth()] + ' ' + (d.getDate() - count).toString()}
   var optsWhsl = {
     type: 'line',
     data: {
-      labels: [, daysAgo(5),,, daysAgo(4),,,daysAgo(2),,, daysAgo(1),, daysAgo(0),,],
+      labels: [, daysAgo(5),, daysAgo(4),,daysAgo(2),, daysAgo(1),, daysAgo(0),],
       datasets: [{
         label: "Beverly's cups",
         fill: false,
@@ -26,7 +38,7 @@ var createCharts = function(graphID){
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [2, 2.1, 3, 2.5, 3, 2.7, 2.8, 2.3, 3, 4.7, 3.9, 4.3, 4.3, 3.7, 3],
+        data: graphData,
         pointBorderColor: false,
         spanGaps: false
       }]

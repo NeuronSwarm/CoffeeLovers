@@ -66,3 +66,10 @@ canvas {
 .coffee-btn {
   font-size: 36px;
   border-radius: 50%; }
+
+.coffee-btn:focus {
+  outline: 0;
+  background: rgba(0, 255, 0, 0.6); }
+
+.fa {
+  color: white; }

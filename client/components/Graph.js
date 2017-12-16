@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import createCharts from '../coffee-data'
+import { getLastDays } from '../redux/reducers/coffee-api';
+import store from '../redux/store';
 
 class Graph extends Component {
   constructor(props){
     super(props);
+    this.config = {
+      id: props.id
+    }
   }
   render() {
     return (
@@ -14,13 +19,37 @@ class Graph extends Component {
     )
   }
 
+  shouldComponentUpdate(prevProps){
+    console.log('Should component Update');
+    console.log(prevProps);
+    return true;
+  }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.days){
+      console.log("graph update")
+      this.config.data = nextProps.days.coffeeCups
+      createCharts(this.config)
+    }
+  }
+  // componentDidUpdate(){
+  //   console.log(this.props)
+  //   if(this.props.coffee)
+  //     console.log(this.props.coffee.coffeeCups)
+  // }
   componentDidMount() {
-    var wrapper = (my_graphID) => {
-      return function(){ createCharts(my_graphID)}
+    var wrapper = (graphConfig) => {
+      return function(){ 
+        console.log('graphReady triggered')
+        createCharts(graphConfig)
+      }
     } 
-    window.addEventListener('load', wrapper(this.props.id));
+    var root = document.getElementById('root')
+    root.addEventListener('graphReady', wrapper(this.config));
+    console.log('Get LastDays')
+    getLastDays()(store.dispatch)
   }
 }
 
-const mapState = ({tasks}) => ({tasks});
-export default connect(mapState)(Graph);
+const mapState = ({coffee, days}) => ({coffee, days});
+const mapDispatch = { getLastDays }
+export default connect(mapState, mapDispatch)(Graph);
