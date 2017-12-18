@@ -3,10 +3,11 @@ import React from 'react';
 const Today = (props) => {
   var coffeeCount = 0
   var coffeeTime = props.data.time
-  var bigCentral = { fontSize: '28px',
+  var bigCentral = { fontSize: '36px',
                        position: 'absolute',
                        top: '40%',
                        left: '40%' }
+  console.log(props.coffee)
   if(props.coffee){
     coffeeCount = props.coffee.coffeeCups
     if(props.coffee.updatedAt == '--')
@@ -18,7 +19,7 @@ const Today = (props) => {
   }
   if(props.type == "TODAY"){
     return (
-      <div style={bigCentral} className= {props.data.cups}> { props.data.cupCount } </div>
+      <div style={bigCentral} className= {props.data.cups}> { coffeeCount } </div>
     );
   } else if(props.type == "LAST_CUP"){
     return (

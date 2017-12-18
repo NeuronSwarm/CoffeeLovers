@@ -1,35 +1,44 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import Header from './Header';
-import Section from './Section';
-import Graph from './Graph';
 import Panel from './Panel';
 import Container from './Container';
-import Row from './Row';
-import { getCoffeeIndex } from '../redux/reducers/coffee-api';
+import Container_Row from './Container_Row';
+import { getCoffeeIndex, getLastDays } from '../redux/reducers/coffee-api';
+import store from '../redux/store';
+import Absolute from './Absolute';
 
 class Home extends Component {
   constructor(props){
     super(props);
-    this.style = { fontSize: '36px',
-                   margin: "10px 0",
-                   marginLeft: "5%",
-                   textTransform: 'capitalize' }
-    var config = { lastDays: [] }; 
-    this.graph1 = { id: "chart1", config}
-    this.graph2 = { id: "chart2", config}
+    this.m_data= { title: "Today's Cups",
+                   type: "TODAY",
+                   cups: 'cups-today',
+                   container: 'title-container',
+                   cupCount: 5}
+    this.drink_data= { title: "Last Cup",
+                   type: "LAST_CUP",
+                   cups: 'cups-today',
+                   container: 'title-container',
+                   time: '6:02pm'}
   }
-
 
   render() {
     return (
       <div>
-        <Row graph = {this.graph1}/>
+        <Absolute>
+          <Container_Row>
+            <Panel data = { this.m_data } coffee = { this.props.coffee } />
+          </Container_Row>
+        </Absolute>
       </div>
     )
   }
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps)
+  }
   componentDidMount() {
     console.log("Home mounted");
+    getCoffeeIndex()(store.dispatch)
   }
 }
 

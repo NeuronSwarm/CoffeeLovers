@@ -13,15 +13,20 @@ class Panel extends Component {
                               height: '100%',
                               color: 'white',
                               }
-    this.textStyle = { textTransform: 'uppercase',
-                       fontSize: '14px'}
+    this.labelStyle = { position: 'absolute', 
+                        top: '30%',
+                        left: '110%',
+                        textTransform: 'uppercase',
+                        fontSize: '28px',
+                        fontWeight: 'bold',
+                        textAlign: 'center'}
   }
 // classes and title should be dynamic.  data should be recieved from server
   render() {
-    //<div className='statistic-label'> {this.props.data.title}</div>
     return (
       <div className="panel1" style={ this.coffeeBackground }>
         <Today coffee={this.props.coffee} data= {this.props.data} type= {this.props.data.type} />
+        <div style={ this.labelStyle }> {this.props.data.title}</div>
       </div>
     );
   }
@@ -29,5 +34,5 @@ class Panel extends Component {
 }
 ;
 
-const mapState = ({tasks}) => ({tasks});
+const mapState = ({coffee}) => ({coffee});
 export default connect(mapState)(Panel);
