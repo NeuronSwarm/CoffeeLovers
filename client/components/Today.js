@@ -5,8 +5,8 @@ const Today = (props) => {
   var coffeeTime = props.data.time
   var bigCentral = { fontSize: '36px',
                        position: 'absolute',
-                       top: '40%',
-                       left: '40%' }
+                       top: '42%',
+                       left: '22%' }
   console.log(props.coffee)
   if(props.coffee){
     coffeeCount = props.coffee.coffeeCups

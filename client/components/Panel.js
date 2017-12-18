@@ -9,13 +9,13 @@ class Panel extends Component {
     super(props)
     this.coffeeBackground = { background: `url(${config.site.url}/img/CoffeeCup_Plain.png)`,
                               backgroundRepeat: 'no-repeat',
-                              backgroundSize: '100% 100%',
+                              backgroundSize: '50% 100%',
                               height: '100%',
-                              color: 'white',
-                              }
+                              color: 'white'
+                            }
     this.labelStyle = { position: 'absolute', 
                         top: '30%',
-                        left: '110%',
+                        left: '50%',
                         textTransform: 'uppercase',
                         fontSize: '28px',
                         fontWeight: 'bold',

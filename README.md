@@ -11,7 +11,7 @@ Add this code to your site
 
 ```
 <div id=coffeeLover style='background: #222'></div>
-script(src="https://techdrone.us/dist/bundle.js")
+<script src="https://techdrone.us/dist/bundle.js"></script>
 ```
 
 A login should appear in the upper left portion of your site.  Login and the counter works out of the box!
