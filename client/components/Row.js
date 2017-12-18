@@ -28,13 +28,7 @@ class Home extends Component {
     return (
       <div>
         <Container_Row>
-          <Container>
-            <Panel data = { this.m_data } coffee = { this.props.coffee } />
-            <Panel data = { this.drink_data } coffee = { this.props.coffee } />
-          </Container>
-          <Container chart = {true}>
-            <Graph id = {this.props.graph.id} onEnter={ getLastDays }/>
-          </Container>
+          <Panel data = { this.m_data } coffee = { this.props.coffee } />
         </Container_Row>
       </div>
     )

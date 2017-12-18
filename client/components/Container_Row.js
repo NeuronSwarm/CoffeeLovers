@@ -1,7 +1,7 @@
 import React from 'react';
 
 var divStyle = {
-  height: '250px'
+  height: '100%'
 }
 const Container_Row = (props) => {
 

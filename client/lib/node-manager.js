@@ -8,6 +8,9 @@ export default class NodeManager {
   static getConfig(){
     return { headers: { my_cookie: localStorage.getItem("session") }}
   }
+  static loggedIn(){
+    return localStorage.getItem("session") ? true: false
+  }
   getSession(){
     return this.session;
   }

@@ -24,9 +24,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div style={this.style}> {this.props.coffee.user} </div>
         <Row graph = {this.graph1}/>
-        <Row graph = {this.graph2}/>
       </div>
     )
   }
