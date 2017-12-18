@@ -13,10 +13,7 @@ class CupUpdater extends Component {
   }
   render() {
     return (
-      <div className={'mobile-container'} style={ this.SetPageHeight() }>
-        <div>
-          <SimpleButton />
-        </div>
+      <div id={'coffeeLover'}  >
       </div>
     )
   }
