@@ -1,6 +1,6 @@
 import NodeManager from "../../lib/node-manager"
 import axios from "axios";
-//import store from "../store"
+import config from "../../config.js"
 
 const POST_COFFEE = "POST_COFFEE";
 const GET_COFFEE = "GET_COFFEE";
@@ -8,10 +8,9 @@ const GET_DAYS = "GET_DAYS";
 const CHANGE_STATUS = "CHANGE_STATUS";
 const DELETE_TASK = "DELETE_TASK";
 
-const PROTOCOL = 'http://'
-const DOMAIN = "localhost"
-const PORT = ":8080"
-const URL = PROTOCOL + DOMAIN + PORT
+console.log('ENV')
+console.log(process.env.NODE_ENV)
+const URL = config.site.api
 /////////////////ACTIONS//////////////
 
 const addCoffee = () => ({type: POST_COFFEE});

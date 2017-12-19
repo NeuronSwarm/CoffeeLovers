@@ -5,6 +5,9 @@ export default class NodeManager {
     this.user = user;
   }
 
+  static baseURL(){
+    
+  }
   static getConfig(){
     return { headers: { my_cookie: localStorage.getItem("session") }}
   }
@@ -18,5 +21,6 @@ export default class NodeManager {
   getUser(){
     return this.user;
   }
+
 
 }
