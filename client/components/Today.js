@@ -4,10 +4,11 @@ const Today = (props) => {
   var coffeeCount = 0
   var coffeeTime = props.data.time
   var bigCentral = { fontSize: '36px',
-                       position: 'absolute',
-                       top: '42%',
-                       left: '22%' }
-  console.log(props.coffee)
+                     lineHeight: '36px',
+                     position: 'absolute',
+                     top: '42%',
+                     left: '22%' }
+
   if(props.coffee){
     coffeeCount = props.coffee.coffeeCups
     if(props.coffee.updatedAt == '--')

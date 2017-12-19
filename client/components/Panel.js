@@ -18,6 +18,7 @@ class Panel extends Component {
                         left: '50%',
                         textTransform: 'uppercase',
                         fontSize: '28px',
+                        lineHeight: '28px',
                         fontWeight: 'bold',
                         textAlign: 'center'}
   }
