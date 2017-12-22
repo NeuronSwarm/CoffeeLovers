@@ -3,23 +3,15 @@ import { connect } from 'react-redux';
 import Panel from './Panel';
 import Container from './Container';
 import Container_Row from './Container_Row';
-import { getCoffeeIndex, getLastDays } from '../redux/reducers/coffee-api';
 import store from '../redux/store';
 import Absolute from './Absolute';
+import Widget from '../lib/widget'
 
 class Home extends Component {
   constructor(props){
     super(props);
-    this.m_data= { title: "Today's Cups",
-                   type: "TODAY",
-                   cups: 'cups-today',
-                   container: 'title-container',
-                   cupCount: 5}
-    this.drink_data= { title: "Last Cup",
-                   type: "LAST_CUP",
-                   cups: 'cups-today',
-                   container: 'title-container',
-                   time: '6:02pm'}
+    var widget  = this.widget = new Widget(coffeeConfig);
+    this.m_data = widget.style()
   }
 
   render() {
@@ -38,10 +30,10 @@ class Home extends Component {
   }
   componentDidMount() {
     console.log("Home mounted");
-    getCoffeeIndex()(store.dispatch)
+    this.widget.fetchData()(store.dispatch)
   }
 }
 
 const mapState = ({coffee}) => ({coffee});
-const mapDispatch = { getCoffeeIndex };
+const mapDispatch = { fetchData: (new Widget(coffeeConfig)).fetchData };
 export default connect(mapState, mapDispatch)(Home);

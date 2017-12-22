@@ -88,16 +88,29 @@ export const getCoffeeIndex = () => dispatch => {
       console.error.bind(err);
     })
 };
+export const getCoffeeYearTotal = () => dispatch => {
+  axios.get(`${URL}/api/coffee/year`, NodeManager.getConfig())
+    .then((response) => {
+      return response.data;
+    })
+    .then((coffeeData) => {
+      dispatch(getCoffee(coffeeData))
+    })
+    .catch((err) => {
+      console.error.bind(err);
+    })
+};
 
 export const getLastDays = () => dispatch => {
   console.log("Attempt Graph Lookup")
-  axios.get('http://localhost:8080/api/coffee/days', NodeManager.getConfig())
+  axios.get(`${URL}/api/coffee/days`, NodeManager.getConfig())
     .then((response) => {
       return response.data;
     })
     .then((coffeeData) => {
       console.log('Response Data')
       return dispatch(getDays(coffeeData))
+      // UnTested
       var evt = document.createEvent('CustomEvent')
       evt.initCustomEvent('graphReady', true, false)
       var root = document.findElementById('root')

@@ -7,7 +7,7 @@ import config from '../config'
 class Panel extends Component {
   constructor(props) {
     super(props)
-    this.coffeeBackground = { background: `url(${config.site.url}/img/CoffeeCup_Plain.png)`,
+    this.coffeeBackground = { background: `url(${config.site.api}/img/CoffeeCup_Plain.png)`,
                               backgroundRepeat: 'no-repeat',
                               backgroundSize: '50% 100%',
                               height: '100%',

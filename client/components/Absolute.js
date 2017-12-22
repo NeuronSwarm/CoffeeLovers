@@ -1,6 +1,6 @@
 import React from 'react';
 
- 
+// coffeeConfig is a global 
 var _alignment = (coffeeConfig.position == 'right') ? '70%' : '10%';
 var _background = coffeeConfig.background || 'rgba(0,0,0,0.7)';
 var color = {} ;// Tough one to swap coffee icon images
